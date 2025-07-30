@@ -76,9 +76,9 @@ def check_if_system_running(system, error_count=0):
     for pod in pods_running_array:
         if system+"-userdev" in pod:
             # print (pod+" <--LINE")
-            if "Init" in pod:                
+            if "Init" in pod or "Pending" in pod or "ContainerCreating" in pod:                
                 completed = False                                        
-        if "Init" in pod:
+        if "Init" in pod or "Pending" in pod or "ContainerCreating" in pod:
             print(f"\033[34m"+pod+"\033[0m")
             completed = False
         elif "Running" in pod:
