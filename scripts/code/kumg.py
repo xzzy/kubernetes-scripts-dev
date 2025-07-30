@@ -37,7 +37,7 @@ with open(home_directory+"/kumg/config/settings.json") as json_data:
 
 namespace  = settings_json["namespace"]
 git_username = "dbca-wa"
-git_repo = "docker-scripts-dev"
+git_repo = "kubernetes-scripts-dev"
 git_branch = "main"
   
 if "git_username" in settings_json:
