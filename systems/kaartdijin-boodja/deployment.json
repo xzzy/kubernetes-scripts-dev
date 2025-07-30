@@ -1,0 +1,9 @@
+{
+    "name": "Kaatdijin Boodja Development Database",
+    "workload_name" : "kaartdijin-boodja-userdev",
+    "workload_deployment_file": "kaartdijin-boodja-userdev.yaml",    
+    "workload_storage_file": "kaartdijin-boodja-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/kaatdijin-boodja.env",
+    "dependency_workloads": ["postgres16"]
+}

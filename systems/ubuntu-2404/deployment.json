@@ -1,0 +1,9 @@
+{
+    "name": "Ubuntu 24.04 Development",
+    "workload_name" : "ubuntu2404-userdev",
+    "workload_deployment_file": "ubuntu2404-userdev.yaml",    
+    "workload_storage_file": "ubuntu2404-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/ubuntu2404.env",
+    "dependency_workloads": []
+}

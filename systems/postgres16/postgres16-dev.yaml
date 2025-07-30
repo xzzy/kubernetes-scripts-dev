@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres16-userdev
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-postgres16-userdev
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-postgres16-userdev
+    spec:
+      initContainers:
+          - name: file-permission-container
+            image: busybox
+            command: ["sh", "-c", "mkdir /var/lib/postgresql/data/data; chown -R 999:999 /var/lib/postgresql/data/ "]              
+            volumeMounts:
+              - name: postgres16-userdev
+                mountPath: /var/lib/postgresql/data
+            securityContext:
+              runAsUser: 0 # Run as root user
+              allowPrivilegeEscalation: true
+      containers:
+        - env:            
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:                 
+            - secretRef:
+                name: {{system}}-{{namespace}}-userdev
+                optional: false                         
+          name: postgres16-userdev
+          image: ghcr.io/dbca-wa/docker-apps-dev:postgres16_latest  
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5432
+              name: tcp5432
+              protocol: TCP
+          stdin: true          
+          tty: true     
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres16-userdev
+              subPath: data                      
+          resources:
+            limits:
+              cpu: '3'
+              memory: 4Gi
+            requests:
+              cpu: 10m
+              memory: 4Gi          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL          
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+            runAsUser: 999 
+            runAsGroup: 999                    
+      volumes:
+        - name:  postgres16-userdev
+          persistentVolumeClaim:
+            claimName: postgres16-userdev          
+

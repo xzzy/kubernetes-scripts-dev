@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{system}}-userdev
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev	
+    spec:
+      initContainers:
+          - name: file-permission-container
+            image: busybox
+            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/"]              
+            volumeMounts:
+              - name: {{system}}-userdev
+                mountPath: /mnt/storage/
+            securityContext:
+              runAsUser: 0 # Run as root user
+              allowPrivilegeEscalation: true
+      containers:
+        - env:
+            - name: ENABLE_WEB
+              value: 'False'
+            - name: ENABLE_CRON
+              value: 'False'
+          envFrom:
+            - secretRef:
+                name: {{system}}-{{namespace}}-userdev
+                optional: false                
+          name: {{system}}-userdev
+          image: docker.io/dbcawa/docker_app_dev:sqs_dev_latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: tcp8080
+              protocol: TCP
+          stdin: true          
+          tty: true     
+          volumeMounts:
+            - mountPath: /data/
+              name: {{system}}-userdev
+              subPath: data                  
+            - mountPath: /home/container/
+              name: {{system}}-userdev
+              subPath: container   
+          workingDir: /data/data/projects/sqs/
+          resources:
+            limits:
+              cpu: '1'
+              memory: 2Gi
+            requests:
+              cpu: 10m
+              memory: 2Gi          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL          
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 200000           
+      volumes:
+        - name:  {{system}}-userdev
+          persistentVolumeClaim:
+            claimName: {{system}}-userdev
+            

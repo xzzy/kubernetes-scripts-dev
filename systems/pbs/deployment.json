@@ -1,0 +1,9 @@
+{
+    "name": "Prescribed Burns System Development",
+    "workload_name" : "pbs-userdev",
+    "workload_deployment_file": "pbs-userdev.yaml",    
+    "workload_storage_file": "pbs-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/pbs.env",
+    "dependency_workloads": ["postgres16"]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Appmonitor Development",
+    "workload_name" : "appmonitor-userdev",
+    "workload_deployment_file": "appmonitor-userdev.yaml",
+    "workload_storage_file": "appmonitor-userdev-storage.yaml",    
+    "use_generic_file" : true,
+    "environment_file" : "./env/appmonitor.env",
+    "dependency_workloads": []
+}

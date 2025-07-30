@@ -1,0 +1,10 @@
+{
+    "name": "Postgres16 Development Database",
+    "workload_name" : "postgres16-userdev",
+    "workload_deployment_file": "postgres16-dev.yaml",    
+    "workload_storage_file": "postgres16-dev-storage.yaml",    
+    "workload_service_file": "postgres16-dev-service.yaml",  
+    "use_generic_file" : true,    
+    "environment_file" : "./env/postgres16.env",
+    "dependency_workloads": ["postgres16"]
+}

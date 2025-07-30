@@ -1,0 +1,9 @@
+{
+    "name": "Spatial Layer Monitor Development",
+    "workload_name" : "spatial-layer-monitor-userdev",
+    "workload_deployment_file": "spatial-layer-monitor-userdev.yaml",    
+    "workload_storage_file": "spatial-layer-monitor-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/spatial-layer-monitor.env",
+    "dependency_workloads": ["postgres16"]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Leases licensing Development",
+    "workload_name" : "leases-licensing-userdev",
+    "workload_deployment_file": "leases-licensing-userdev.yaml",    
+    "workload_storage_file": "leases-licensing-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/leases-licensing.env",
+    "dependency_workloads": ["postgres16"]
+}

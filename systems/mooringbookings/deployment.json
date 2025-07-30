@@ -1,0 +1,9 @@
+{
+    "name": "Mooring Licensing Development",
+    "workload_name" : "mooringbookings-userdev",
+    "workload_deployment_file": "mooringbookings-userdev.yaml",    
+    "workload_storage_file": "mooringbookings-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/mooringbookings.env",
+    "dependency_workloads": ["postgres16"]
+}

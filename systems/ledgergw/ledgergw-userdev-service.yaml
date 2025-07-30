@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ledgergw-userdev
+spec:
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-ledgergw-userdev
+  ports:
+    - name: ledgergw-userdev-7001
+      protocol: TCP
+      port: 7001
+      targetPort: 8080
+    - name: ledgergw-userdev-9021
+      protocol: TCP
+      port: 9021
+      targetPort: 9021
+      

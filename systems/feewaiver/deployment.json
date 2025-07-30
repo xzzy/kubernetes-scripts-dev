@@ -1,0 +1,9 @@
+{
+    "name": "Feewaiver Development",
+    "workload_name" : "feewaiver-userdev",
+    "workload_deployment_file": "feewaiver-userdev.yaml",    
+    "workload_storage_file": "feewaiver-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/feewaiver.env",
+    "dependency_workloads": ["postgres16"]
+}
