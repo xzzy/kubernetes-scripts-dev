@@ -9,9 +9,13 @@ import os
 import base64
 import sys
 import tempfile
+import time
 from pathlib import Path
 
+version = "1.0.1"
+print ("KUMG - Kubernetes Developer Manager - Version "+version)
 action = ''
+
 if len(sys.argv) > 1:
     action = sys.argv[1]
 
@@ -62,6 +66,55 @@ try:
 except Exception:
     print ("Error: git command not found")
     sys.exit(1)
+
+def check_if_system_running(system, error_count=0):
+    pods_running = get_pods()
+
+    pods_running_array = pods_running.splitlines()
+    completed = True
+    
+    for pod in pods_running_array:
+        if system+"-userdev" in pod:
+            # print (pod+" <--LINE")
+            if "Init" in pod:                
+                completed = False                                        
+        if "Init" in pod:
+            print(f"\033[34m"+pod+"\033[0m")
+            completed = False
+        elif "Running" in pod:
+            print(f"\033[92m"+pod+"\033[0m")                
+        elif "Terminating" in pod:
+            print(f"\033[93m"+pod+"\033[0m")       
+        elif "Error" in pod  or "CrashLoopBackOff" in pod or "ImagePullBackOff" in pod or "Evicted" in pod or "ErrImagePull" in pod:
+            print(f"\033[31m"+pod+"\033[0m")                    
+            completed = False  
+            error_count = error_count + 1            
+            if error_count > 5:
+                completed = True                
+                print(f"\033[31mError: Too many errors, starting pods \033[0m") 
+        
+        else:
+            print (pod)
+
+                
+    # Add space between information            
+    print ("")                
+
+    if completed is False:
+        time.sleep(5)
+        check_if_system_running(system, error_count)
+                
+            
+
+def get_pods():
+    run_results = ""
+    try:
+        run_results_out = subprocess.run([kubectl_cmd, "get", "pods", "--namespace="+namespace],stdout=subprocess.PIPE, stderr=subprocess.STDOUT) 
+        run_results = run_results_out.stdout.decode('utf-8')
+    except Exception as e:
+        print ("Error: scaling deployment down")
+        print (e)
+    return run_results
 
 def deploy_workload(deployment_json,system_to_deploy):
 
@@ -118,17 +171,20 @@ def deploy_workload(deployment_json,system_to_deploy):
     if "workload_deployment_file" in deployment_json:
         
         print ("Deploying workload for "+deployment_json["name"])
-        tmp_workload_path="./tmp/"+hash_random+"-"+deployment_json["workload_deployment_file"]
+        tmp_workload_path="./tmp/"+hash_random+"-"+deployment_json["workload_deployment_file"]        
         yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system_to_deploy+"/"+deployment_json["workload_deployment_file"])
-        yaml_data = yaml_data_resp.text
+        
+        yaml_data = yaml_data_resp.text        
 
         yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
         yaml_data = re.sub("{{system}}", system_to_deploy, yaml_data)            
+        
         with open(tmp_workload_path, "w") as f:
             f.write(yaml_data)
 
         subprocess.run([kubectl_cmd, "apply","-f",tmp_workload_path]) 
         os.remove(tmp_workload_path)
+        
 
     # deploy services
     if "workload_service_file" in deployment_json:
@@ -171,11 +227,10 @@ if not os.path.exists("./tmp/"):
     os.mkdir("./tmp/")
     
 if action == 'getpods':
-    try:
-        subprocess.run([kubectl_cmd, "get", "pods", "--namespace="+namespace]) 
-    except Exception as e:
-        print ("Error: scaling deployment down")
-        print (e)
+    pods_running = get_pods()
+    print (pods_running)
+
+    
 elif action == 'stopall':
     try:
         subprocess.run([kubectl_cmd, "scale", "--replicas=0", "--all", "deployments","--namespace="+namespace]) 
@@ -198,6 +253,9 @@ elif action == 'deploy':
             deploy_workload(dependant_deployment_json,dw)
 
         deploy_workload(deployment_json,system)
+        check_if_system_running(system)
+  
+
 else:
     print ("""
     Usage:
