@@ -184,7 +184,7 @@ elif action == 'stopall':
         print (e)
 
 elif action == 'deploy':
-    print ("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system+"/deployment.json")
+    print ("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system+"/deployment.json")
     deployment_json_data = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system+"/deployment.json")
     deployment_json = json.loads(deployment_json_data.text)
         
