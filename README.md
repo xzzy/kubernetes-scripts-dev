@@ -1,1 +1,1 @@
-# kubernetes-scripts-dev
+# Development scripts and configs for deploying a development environment to kubernetes
