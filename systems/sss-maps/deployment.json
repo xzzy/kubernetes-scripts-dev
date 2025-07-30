@@ -1,0 +1,9 @@
+{
+    "name": "SSS Maps Development",
+    "workload_name" : "sss-maps-userdev",
+    "workload_deployment_file": "sss-maps-userdev.yaml",    
+    "workload_storage_file": "sss-maps-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/sss-maps.env",
+    "dependency_workloads": ["postgres16"]
+}

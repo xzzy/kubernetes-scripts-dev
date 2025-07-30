@@ -1,0 +1,9 @@
+{
+    "name": "Bushfire Reporting System Development",
+    "workload_name" : "bfrs-userdev",
+    "workload_deployment_file": "bfrs-userdev.yaml",    
+    "workload_storage_file": "bfrs-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/bfrs.env",
+    "dependency_workloads": ["postgres16"]
+}

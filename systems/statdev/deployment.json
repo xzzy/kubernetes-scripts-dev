@@ -1,0 +1,9 @@
+{
+    "name": "Statutory Assessement Development",
+    "workload_name" : "statdev-userdev",
+    "workload_deployment_file": "statdev-userdev.yaml",    
+    "workload_storage_file": "statdev-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/statdev.env",
+    "dependency_workloads": ["postgres16"]
+}

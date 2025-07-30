@@ -1,0 +1,9 @@
+{
+    "name": "Wildlife Compliance Development",
+    "workload_name" : "wildlifecompliance-userdev",
+    "workload_deployment_file": "wildlifecompliance-userdev.yaml",    
+    "workload_storage_file": "wildlifecompliance-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/wildlifecompliance.env",
+    "dependency_workloads": ["postgres16"]
+}

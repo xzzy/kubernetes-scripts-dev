@@ -75,7 +75,7 @@ def deploy_workload(deployment_json,system_to_deploy):
     if "workload_storage_file" in deployment_json:    
         print ("Deploying storage for "+deployment_json["name"])
         tmp_storage_path="./tmp/"+hash_random+"-"+deployment_json["workload_storage_file"]
-        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system_to_deploy+"/"+deployment_json["workload_storage_file"])
+        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system_to_deploy+"/"+deployment_json["workload_storage_file"])
         yaml_data = yaml_data_resp.text
 
         yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
@@ -91,11 +91,11 @@ def deploy_workload(deployment_json,system_to_deploy):
         if deployment_json["use_generic_file"] is True:  
             print ("Deploying secrets for "+deployment_json["name"])
             tmp_secrets_path="./tmp/"+hash_random+"-"+system_to_deploy+"-secrets.yaml"                
-            with open(deployment_json["environment_file"]) as file_data:
+            with open(home_directory+"/kumg/"+deployment_json["environment_file"]) as file_data:
                 env_data = file_data.read()                         
                 # print (env_data)
 
-            yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/generic/generic-secrets.yaml")
+            yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/generic/generic-secrets.yaml")
             yaml_data = yaml_data_resp.text
 
             yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
@@ -119,7 +119,7 @@ def deploy_workload(deployment_json,system_to_deploy):
         
         print ("Deploying workload for "+deployment_json["name"])
         tmp_workload_path="./tmp/"+hash_random+"-"+deployment_json["workload_deployment_file"]
-        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system_to_deploy+"/"+deployment_json["workload_deployment_file"])
+        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system_to_deploy+"/"+deployment_json["workload_deployment_file"])
         yaml_data = yaml_data_resp.text
 
         yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
@@ -135,7 +135,7 @@ def deploy_workload(deployment_json,system_to_deploy):
         
         print ("Deploying service for "+deployment_json["name"])
         tmp_workload_path="./tmp/"+hash_random+"-"+deployment_json["workload_service_file"]
-        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system_to_deploy+"/"+deployment_json["workload_service_file"])
+        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system_to_deploy+"/"+deployment_json["workload_service_file"])
         yaml_data = yaml_data_resp.text
 
         yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
@@ -150,7 +150,7 @@ def deploy_workload(deployment_json,system_to_deploy):
     if "workload_network_file" in deployment_json:        
         print ("Deploying network for "+deployment_json["name"])
         tmp_workload_path="./tmp/"+hash_random+"-"+deployment_json["workload_network_file"]
-        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system_to_deploy+"/"+deployment_json["workload_network_file"])
+        yaml_data_resp = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system_to_deploy+"/"+deployment_json["workload_network_file"])
         yaml_data = yaml_data_resp.text
 
         yaml_data = re.sub("{{namespace}}", namespace, yaml_data)
@@ -185,7 +185,7 @@ elif action == 'stopall':
 
 elif action == 'deploy':
     print ("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system+"/deployment.json")
-    deployment_json_data = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+system+"/deployment.json")
+    deployment_json_data = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+system+"/deployment.json")
     deployment_json = json.loads(deployment_json_data.text)
         
     print ("Preparing deployment for "+deployment_json["name"])
@@ -193,7 +193,7 @@ elif action == 'deploy':
     if "dependency_workloads" in deployment_json:
         dependency_workloads= deployment_json["dependency_workloads"]  
         for dw in dependency_workloads:        
-            dependant_deployment_json_data = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/kubectl/systems/"+dw+"/deployment.json")
+            dependant_deployment_json_data = requests.get("https://raw.githubusercontent.com/"+git_username+"/"+git_repo+"/refs/heads/"+git_branch+"/systems/"+dw+"/deployment.json")
             dependant_deployment_json = json.loads(dependant_deployment_json_data.text)
             deploy_workload(dependant_deployment_json,dw)
 

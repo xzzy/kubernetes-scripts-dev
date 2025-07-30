@@ -1,0 +1,9 @@
+{
+    "name": "Gokart SSS Django Development",
+    "workload_name" : "gokart-sss-django-userdev",
+    "workload_deployment_file": "gokart-sss-django-userdev.yaml",    
+    "workload_storage_file": "gokart-sss-django-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/gokart-sss-django.env",
+    "dependency_workloads": ["postgres16"]
+}

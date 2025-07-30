@@ -1,0 +1,9 @@
+{
+    "name": "API Gateway Development",
+    "workload_name" : "api-gateway-userdev",
+    "workload_deployment_file": "api-gateway-userdev.yaml",    
+    "workload_storage_file": "api-gateway-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/api-gatway.env",
+    "dependency_workloads": ["postgres16"]
+}

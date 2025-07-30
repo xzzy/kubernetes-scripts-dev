@@ -1,0 +1,9 @@
+{
+    "name": "Disturbance Development",
+    "workload_name" : "disturbance-userdev",
+    "workload_deployment_file": "disturbance-userdev.yaml",    
+    "workload_storage_file": "disturbance-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/disturbance.env",
+    "dependency_workloads": ["postgres16"]
+}

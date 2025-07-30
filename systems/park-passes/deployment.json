@@ -1,0 +1,9 @@
+{
+    "name": "Park Passes Development",
+    "workload_name" : "park-passes-userdev",
+    "workload_deployment_file": "park-passes-userdev.yaml",    
+    "workload_storage_file": "park-passes-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/park-passes.env",
+    "dependency_workloads": ["postgres16"]
+}

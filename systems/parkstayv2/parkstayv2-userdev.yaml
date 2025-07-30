@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parkstayv2-userdev
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-parkstayv2-userdev
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-parkstayv2-userdev	
+    spec:
+      initContainers:
+          - name: file-permission-container
+            image: busybox
+            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/"]              
+            volumeMounts:
+              - name: parkstayv2-userdev
+                mountPath: /mnt/storage/
+            securityContext:
+              runAsUser: 0 # Run as root user
+              allowPrivilegeEscalation: true
+      containers:
+        - env:
+            - name: ENABLE_WEB
+              value: 'False'
+            - name: ENABLE_CRON
+              value: 'False'
+          envFrom:
+            - secretRef:
+                name: {{system}}-{{namespace}}-userdev
+                optional: false                
+          name: parkstayv2-userdev
+          image: dbcawa/docker_app_dev:parkstay_v2_latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: tcp8080
+              protocol: TCP
+          stdin: true          
+          tty: true     
+          volumeMounts:
+            - mountPath: /data/
+              name: parkstayv2-userdev
+              subPath: data                  
+            - mountPath: /home/container/
+              name: parkstayv2-userdev
+              subPath: container   
+          workingDir: /data/data/projects/parkstay_bs_v2/
+          resources:
+            limits:
+              cpu: '2'
+              memory: 5Gi
+            requests:
+              cpu: 10m
+              memory: 5Gi          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL          
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 200000           
+      volumes:
+        - name:  parkstayv2-userdev
+          persistentVolumeClaim:
+            claimName: parkstayv2-userdev
+            

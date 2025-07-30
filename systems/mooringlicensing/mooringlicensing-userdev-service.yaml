@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mooringlicensing-userdev
+spec:
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-mooringlicensing-userdev
+  ports:
+    - protocol: TCP
+      port: 7001
+      targetPort: 8080
+    - protocol: TCP
+      port: 9121
+      targetPort: 9121      

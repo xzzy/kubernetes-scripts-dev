@@ -1,0 +1,9 @@
+{
+    "name": "Boranga Development",
+    "workload_name" : "boranga-userdev",
+    "workload_deployment_file": "boranga-userdev.yaml",    
+    "workload_storage_file": "boranga-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/boranga.env",
+    "dependency_workloads": ["postgres16"]
+}
