@@ -35,7 +35,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:bfrs_dev_latest
+          image: dbcawa/docker_app_dev:bfrs_dev_latesti
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
