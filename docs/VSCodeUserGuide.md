@@ -5,6 +5,7 @@ Click Open Folder  and choose your docker-scripts-dev folder in your home direct
 <img width="736" height="400" alt="image" src="https://github.com/user-attachments/assets/76f3c64d-db41-430d-b246-353420d21201" />
 
 2. In extensions search and install kubernets and dev containers.
+<img width="461" height="383" alt="image" src="https://github.com/user-attachments/assets/9416bdfa-aa3d-45d9-add6-011c6fb8d2a5" />
 
 ![image](https://github.com/user-attachments/assets/0be8736c-9565-41b8-bf9b-81037699fcd4)
 
