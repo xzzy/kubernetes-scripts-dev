@@ -12,8 +12,7 @@
 
 3. To Check the work load has been deployed and is running.
    work loads can take time to deploy.  You can not access your development environment until your workload is successfully running.
-   
-   ![image](https://github.com/user-attachments/assets/74ee5497-9aef-4a65-a12d-78451098208c)
+   <img width="749" height="270" alt="image" src="https://github.com/user-attachments/assets/7990c3c5-2819-4b94-afd4-9d0911ffbadb" />
 
    
 4. Access your development environment in VSCode (Visual Studio Code)
