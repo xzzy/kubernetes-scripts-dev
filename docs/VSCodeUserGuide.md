@@ -2,6 +2,8 @@
 
 1. Open Visual Studio Code (VSCode)
 Click Open Folder  and choose your docker-scripts-dev folder in your home directory.
+<img width="736" height="400" alt="image" src="https://github.com/user-attachments/assets/76f3c64d-db41-430d-b246-353420d21201" />
+
 
 ![image](https://github.com/user-attachments/assets/212a27fb-92b3-4799-80e5-2ca9e995e1bd)
 
