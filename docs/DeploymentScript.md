@@ -3,7 +3,7 @@
 1. Deploying a system to your kubernets development environment.
    In directory c:\Users<home directory>\docker-scripts-dev\kubectl\ run
    ```
-   python deploy.py ubuntu-2404
+   kumg deploy.py ubuntu-2404
    ```
    If successfully should see this response:
    ![image](https://github.com/user-attachments/assets/4a1deb60-9d6d-4a2a-b24f-b04463ffdc3c)
