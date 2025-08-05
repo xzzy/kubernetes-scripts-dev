@@ -9,8 +9,6 @@ Click Open Folder  and choose your docker-scripts-dev folder in your home direct
 
 ![image](https://github.com/user-attachments/assets/0be8736c-9565-41b8-bf9b-81037699fcd4)
 
-![image](https://github.com/user-attachments/assets/cd287515-9a35-4232-92dc-a1f8200fb652)
-
 Click the install on both extensions.
 
 ![image](https://github.com/user-attachments/assets/26db42ee-e4f7-42ab-bae1-efa4814dfb2f)
