@@ -7,8 +7,6 @@
    ```
    If successfully should see this response:
    <img width="961" height="758" alt="image" src="https://github.com/user-attachments/assets/e2b8d227-0f97-406b-9e4c-f6bc19e8d210" />
-
-   ![image](https://github.com/user-attachments/assets/4a1deb60-9d6d-4a2a-b24f-b04463ffdc3c)
    <img width="745" height="140" alt="image" src="https://github.com/user-attachments/assets/e94b2b92-fc26-4c79-8436-0103c2f5c884" />
 
 
