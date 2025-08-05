@@ -29,7 +29,7 @@ In directory c:\users\<home directory>\ create a folder called ".kube".
 
 7.Test connection by running the following command in c:\Users\<home directory>\docker-scripts-dev\kubectl\
 ```
-python get_pods.py
+kumg getpods
 ```
 If working you should see response "No resources found in <namespace> namespace." otherwise if pods have already been deployed then will show a list of running pods
 
