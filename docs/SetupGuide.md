@@ -8,8 +8,8 @@ Instruction below on how to setup kubectl on windows.
 
 2.Login in to rancher and download the kube config file. 
 ![2025-05-13_09-30](https://github.com/user-attachments/assets/ec386fd8-aa1c-4814-b3ab-a107758a0941)
-<BR>
-
+<BR>   
+   
 3. Create kubectl configuration file
 In directory c:\users\<home directory>\ create a folder called ".kube".   
 <br>
