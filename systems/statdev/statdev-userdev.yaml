@@ -53,11 +53,11 @@ spec:
           workingDir: /data/data/projects/statdev/
           resources:
             limits:
-              cpu: '1'
-              memory: 2Gi
+              cpu: '2'
+              memory: 4Gi
             requests:
               cpu: 10m
-              memory: 2Gi          
+              memory: 4Gi          
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
