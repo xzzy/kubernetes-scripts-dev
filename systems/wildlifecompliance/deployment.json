@@ -5,5 +5,5 @@
     "workload_storage_file": "wildlifecompliance-userdev-storage.yaml",    
     "use_generic_file" : true,    
     "environment_file" : "./env/wildlifecompliance.env",
-    "dependency_workloads": ["postgres16"]
+    "dependency_workloads": ["postgres16","ledgergw"]
 }
