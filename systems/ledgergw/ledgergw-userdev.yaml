@@ -28,6 +28,11 @@ spec:
         - effect: NoSchedule
           key: kubernetes.azure.com/scalesetpriority
           operator: Equal
+          value: spot                   
+      tolerations:
+        - effect: NoSchedule
+          key: kubernetes.azure.com/scalesetpriority
+          operator: Equal
           value: spot              
       containers:
         - env:
