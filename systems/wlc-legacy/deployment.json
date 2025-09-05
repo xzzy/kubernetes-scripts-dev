@@ -1,8 +1,8 @@
 {
     "name": "Wildlife Compliance Development Legacy",
     "workload_name" : "wlc-legacy-userdev",
-    "workload_deployment_file": "wildlifecompliance-userdev.yaml",    
-    "workload_storage_file": "wildlifecompliance-userdev-storage.yaml",    
+    "workload_deployment_file": "wlc-userdev.yaml",    
+    "workload_storage_file": "wlc-userdev-storage.yaml",    
     "use_generic_file" : true,    
     "environment_file" : "./env/wildlifecompliance-legacy.env",
     "dependency_workloads": ["postgres16"]
