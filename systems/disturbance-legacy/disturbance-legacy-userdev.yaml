@@ -30,7 +30,9 @@ spec:
           operator: Equal
           value: spot                   
       containers:
-        - env:
+        - command:
+          - /bin/bash
+          env:
             - name: ENABLE_WEB
               value: 'False'
             - name: ENABLE_CRON

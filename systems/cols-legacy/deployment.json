@@ -1,0 +1,9 @@
+{
+    "name": "Commercial Operator Development",
+    "workload_name" : "cols-legacy-userdev",
+    "workload_deployment_file": "cols-userdev.yaml",    
+    "workload_storage_file": "cols-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/commercialoperator-legacy.env",
+    "dependency_workloads": ["postgres16", "ledgergw"]
+}
