@@ -1,6 +1,6 @@
 {
     "name": "Commercial Operator Development",
-    "workload_name" : "commercialoperator-userdev",
+    "workload_name" : "commercialoperator-legacy-userdev",
     "workload_deployment_file": "commercialoperator-userdev.yaml",    
     "workload_storage_file": "commercialoperator-userdev-storage.yaml",    
     "use_generic_file" : true,    
