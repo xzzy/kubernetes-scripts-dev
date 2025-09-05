@@ -29,9 +29,7 @@ spec:
           key: kubernetes.azure.com/scalesetpriority
           operator: Equal
           value: spot                   
-      containers:
-        - command:
-            - /bin/bash      
+      containers:  
         - env:
             - name: ENABLE_WEB
               value: 'False'
