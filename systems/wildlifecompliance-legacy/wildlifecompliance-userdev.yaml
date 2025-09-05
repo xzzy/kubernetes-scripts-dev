@@ -30,6 +30,8 @@ spec:
           operator: Equal
           value: spot                   
       containers:
+        - command:
+            - /bin/bash      
         - env:
             - name: ENABLE_WEB
               value: 'False'
