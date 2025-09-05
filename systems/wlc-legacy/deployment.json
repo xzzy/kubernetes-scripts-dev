@@ -1,6 +1,6 @@
 {
     "name": "Wildlife Compliance Development Legacy",
-    "workload_name" : "wildlifecompliance-legacy-userdev",
+    "workload_name" : "wlc-legacy-userdev",
     "workload_deployment_file": "wildlifecompliance-userdev.yaml",    
     "workload_storage_file": "wildlifecompliance-userdev-storage.yaml",    
     "use_generic_file" : true,    
