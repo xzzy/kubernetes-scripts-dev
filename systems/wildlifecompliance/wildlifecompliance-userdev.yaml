@@ -40,7 +40,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:wildlifecompliance_dev_latest
+          image: dbcawa/docker_app_dev:wildlifecompliance_dev_2025.08.11.06.0314
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
