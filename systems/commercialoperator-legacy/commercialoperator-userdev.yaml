@@ -32,7 +32,7 @@ spec:
       containers:
         - command:
             - /bin/bash      
-        - env:
+          env:
             - name: ENABLE_WEB
               value: 'False'
             - name: ENABLE_CRON
