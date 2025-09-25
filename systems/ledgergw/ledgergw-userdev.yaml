@@ -41,7 +41,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                  
           name: ledgergw-userdev
-          image: dbcawa/docker_app_dev:ledger_dev_latest
+          image: ghcr.io/dbca-wa/docker_app_dev:ledger_dev_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
