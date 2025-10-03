@@ -17,9 +17,9 @@ spec:
       initContainers:
           - name: file-permission-container
             image: busybox
-            command: ["sh", "-c", "mkdir -p /opt/geoserver_data; mkdir -p /data ; chown -R 5000:5000 /opt/geoserver_data; chown -R 5000:5000 /data"]              
+            command: ["sh", "-c", "mkdir -p /opt/geoserver_data; mkdir -p /data ; mkdir -p /container/; mkdir -p /container/logs; chown -R 5000:5000 /container/logs; chown -R 5000:5000 /opt/geoserver_data; chown -R 5000:5000 /data"]              
             volumeMounts:
-              - name: appmonitor-userdev
+              - name: {{system}}-userdev
                 mountPath: /mnt/storage/
             securityContext:
               runAsUser: 0 # Run as root user
@@ -57,12 +57,15 @@ spec:
           tty: true     
           volumeMounts:
             - mountPath: /data/
-              name: appmonitor-userdev
+              name: {{system}}-userdev
               subPath: data                  
-            - mountPath: /home/container/
-              name: appmonitor-userdev
-              subPath: container   
-          workingDir: /data/data/projects/appmonitor/
+            - mountPath: /opt/geoserver_data
+              name: {{system}}-userdev
+              subPath: geoserver_data  
+            - mountPath: /container/logs
+              name: {{system}}-userdev
+              subPath: logs                
+          workingDir: /opt/geoserver_data
           resources:
             limits:
               cpu: '1'
