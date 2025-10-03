@@ -46,8 +46,8 @@ spec:
             - secretRef:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                   
-          name: appmonitor-userdev
-          image: ghcr.io/dbca-wa/docker_app_dev:appmonitor_dev_latest
+          name: geoserver-2-25-userdev
+          image: dbcawa/appsteam-geoserver:2025.10.03.08.2949_ver2.25
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
