@@ -17,7 +17,7 @@ spec:
       initContainers:
           - name: file-permission-container
             image: busybox
-            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/"]              
+            command: ["sh", "-c", "mkdir -p /opt/geoserver_data; mkdir -p /data ; chown -R 5000:5000 /opt/geoserver_data; chown -R 5000:5000 /data"]              
             volumeMounts:
               - name: appmonitor-userdev
                 mountPath: /mnt/storage/
