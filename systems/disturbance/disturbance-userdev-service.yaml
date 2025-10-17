@@ -6,9 +6,11 @@ spec:
   selector:
     workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-disturbance-userdev
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 7001
       targetPort: 8080
-    - protocol: TCP
+    - name: development
+      protocol: TCP
       port: 9061
       targetPort: 9061    
