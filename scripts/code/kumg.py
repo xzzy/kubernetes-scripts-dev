@@ -12,7 +12,7 @@ import tempfile
 import time
 from pathlib import Path
 
-version = "1.0.1"
+version = "1.0.2"
 print ("KUMG - Kubernetes Developer Manager - Version "+version)
 action = ''
 
