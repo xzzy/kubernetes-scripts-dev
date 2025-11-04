@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: geoserver_2_25-userdev
+  name: geoserver-2-25-userdev
 spec:
   accessModes:
     - ReadWriteOnce
@@ -9,3 +9,5 @@ spec:
     requests:
       storage: 12Gi
   storageClassName: managed-csi
+
+

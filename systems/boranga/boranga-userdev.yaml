@@ -58,7 +58,7 @@ spec:
           workingDir: /data/data/projects/boranga/
           resources:
             limits:
-              cpu: '1'
+              cpu: '2'
               memory: 5Gi
             requests:
               cpu: 10m
