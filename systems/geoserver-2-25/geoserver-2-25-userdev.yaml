@@ -47,7 +47,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                   
           name: geoserver-2-25-userdev
-          image: dbcawa/appsteam-geoserver:geoserver2_25_latest
+          image: ghcr.io/dbca-wa/docker-apps-dev:geoserver2_25_latest 
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
