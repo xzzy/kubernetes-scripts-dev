@@ -12,7 +12,7 @@ import tempfile
 import time
 from pathlib import Path
 
-version = "1.0.1"
+version = "1.0.2"
 print ("KUMG - Kubernetes Developer Manager - Version "+version)
 action = ''
 
@@ -61,11 +61,11 @@ except Exception as e:
     print (e)
     sys.exit(1)
 
-try:
-    subprocess.run([git_cmd, "version"]) 
-except Exception:
-    print ("Error: git command not found")
-    sys.exit(1)
+# try:
+#     subprocess.run([git_cmd, "version"]) 
+# except Exception:
+#     print ("Error: git command not found")
+#     sys.exit(1)
 
 def check_if_system_running(system, error_count=0):
     pods_running = get_pods()
