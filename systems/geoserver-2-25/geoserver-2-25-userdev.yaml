@@ -83,7 +83,7 @@ spec:
             runAsNonRoot: true
             runAsUser: 200000           
       volumes:
-        - name:  appmonitor-userdev
+        - name:  geoserver-2-25-userdev
           persistentVolumeClaim:
-            claimName: appmonitor-userdev
+            claimName: geoserver-2-25-userdev
             
