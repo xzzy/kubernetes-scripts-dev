@@ -47,7 +47,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                   
           name: geoserver-2-25-userdev
-          image: dbcawa/appsteam-geoserver:2025.10.03.08.2949_ver2.25
+          image: dbcawa/appsteam-geoserver:geoserver2_25_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -83,7 +83,7 @@ spec:
             runAsNonRoot: true
             runAsUser: 5000
       volumes:
-        - name:  geoserver-2-25-userdev
+        - name:  {{system}}-userdev
           persistentVolumeClaim:
-            claimName: geoserver-2-25-userdev
+            claimName: {{system}}-userdev
             
