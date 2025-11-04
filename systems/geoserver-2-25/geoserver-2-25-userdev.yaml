@@ -81,7 +81,7 @@ spec:
             privileged: false
             readOnlyRootFilesystem: false
             runAsNonRoot: true
-            runAsUser: 5000           
+            runAsUser: 5000
       volumes:
         - name:  geoserver-2-25-userdev
           persistentVolumeClaim:
