@@ -8,11 +8,11 @@ spec:
     type: Recreate  
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-appmonitor-userdev
+      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
   template:
     metadata:
       labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-appmonitor-userdev
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
     spec:
       initContainers:
           - name: file-permission-container
