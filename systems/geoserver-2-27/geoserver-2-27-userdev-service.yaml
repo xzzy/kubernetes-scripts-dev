@@ -6,7 +6,7 @@ spec:
   selector:
     workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
   ports:
-    - name: http 
+    - name: tcp8080 
       protocol: TCP
       port: 8080
       targetPort: 8080
