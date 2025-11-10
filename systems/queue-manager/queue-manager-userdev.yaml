@@ -40,7 +40,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:api_gateway_dev_latest
+          image: dbcawa/docker_app_dev:queuemanager_dev_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -55,7 +55,7 @@ spec:
             - mountPath: /home/container/
               name: {{system}}-userdev
               subPath: container   
-          workingDir: /data/data/projects/api_gateway/
+          workingDir: /data/data/projects/queue-manager/
           resources:
             limits:
               cpu: '1'
