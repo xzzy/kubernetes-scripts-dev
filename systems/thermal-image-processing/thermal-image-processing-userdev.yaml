@@ -40,7 +40,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: ghcr.io/dbca-wa/docker_app_dev:spatial_layer_monitor_dev_latest
+          image: dbcawa/docker_app_dev:thermal_image_processing_dev_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
