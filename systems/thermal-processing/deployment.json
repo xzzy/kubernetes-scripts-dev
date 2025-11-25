@@ -1,6 +1,6 @@
 {
     "name": "Thermal Imaging Processing Development",
-    "workload_name" : "thermal-image-processing-userdev",
+    "workload_name" : "thermal-processing-userdev",
     "workload_deployment_file": "thermal-image-processing-userdev.yaml",    
     "workload_storage_file": "thermal-image-processing-userdev-storage.yaml",    
     "use_generic_file" : true,    
