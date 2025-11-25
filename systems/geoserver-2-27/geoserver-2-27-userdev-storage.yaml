@@ -9,5 +9,15 @@ spec:
     requests:
       storage: 12Gi
   storageClassName: managed-csi
-
-
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: thermal-image-share-userdev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Gi 
+  storageClassName: managed-csi
