@@ -64,7 +64,10 @@ spec:
               subPath: geoserver_data  
             - mountPath: /container/logs
               name: {{system}}-userdev
-              subPath: logs                
+              subPath: logs     
+            - mountPath: /rclone-mounts
+              name: thermal-image-share-userdev
+              subPath: rclone-mounts               
           workingDir: /opt/geoserver_data
           resources:
             limits:
@@ -83,7 +86,10 @@ spec:
             runAsNonRoot: true
             runAsUser: 5000
       volumes:
-        - name:  {{system}}-userdev
+        - name: {{system}}-userdev
           persistentVolumeClaim:
             claimName: {{system}}-userdev
+        - name: thermal-image-share-userdev
+          persistentVolumeClaim:
+            claimName: thermal-image-share-userdev
             
