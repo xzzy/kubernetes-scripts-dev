@@ -55,6 +55,9 @@ spec:
             - mountPath: /home/container/
               name: {{system}}-userdev
               subPath: container   
+            - mountPath: /rclone-mounts
+              name: thermal-image-share-userdev
+              subPath: rclone-mounts                
           workingDir: /data/data/projects/spatial-layer-monitor/
           resources:
             limits:
@@ -76,4 +79,7 @@ spec:
         - name:  {{system}}-userdev
           persistentVolumeClaim:
             claimName: {{system}}-userdev
+        - name: thermal-image-share-userdev
+          persistentVolumeClaim:
+            claimName: thermal-image-share-userdev            
             
