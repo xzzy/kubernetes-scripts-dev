@@ -16,8 +16,8 @@ metadata:
   name: thermal-image-share-userdev
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 16Gi 
-  storageClassName: managed-csi
+  storageClassName: azurefile-csi-retain
