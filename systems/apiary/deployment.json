@@ -1,0 +1,10 @@
+{
+    "name": "Apiary Development",
+    "workload_name" : "apiary-userdev",
+    "workload_deployment_file": "apiary-userdev.yaml",    
+    "workload_storage_file": "apiary-userdev-storage.yaml",    
+    "workload_service_file": "apiary-userdev-service.yaml",
+    "use_generic_file" : true,    
+    "environment_file" : "./env/apiary.env",
+    "dependency_workloads": ["postgres16"]
+}
