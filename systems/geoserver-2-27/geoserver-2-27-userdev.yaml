@@ -8,11 +8,11 @@ spec:
     type: Recreate  
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-appmonitor-userdev
+      workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
   template:
     metadata:
       labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-appmonitor-userdev
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
     spec:
       initContainers:
           - name: file-permission-container
@@ -46,8 +46,8 @@ spec:
             - secretRef:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                   
-          name: geoserver-2-25-userdev
-          image: ghcr.io/dbca-wa/docker-apps-dev:geoserver2_25_latest 
+          name: {{system}}-userdev
+          image: ghcr.io/dbca-wa/docker-apps-dev:geoserver2_27_latest 
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -64,7 +64,10 @@ spec:
               subPath: geoserver_data  
             - mountPath: /container/logs
               name: {{system}}-userdev
-              subPath: logs                
+              subPath: logs     
+            - mountPath: /rclone-mounts
+              name: thermal-image-share-userdev
+              subPath: rclone-mounts               
           workingDir: /opt/geoserver_data
           resources:
             limits:
@@ -83,7 +86,10 @@ spec:
             runAsNonRoot: true
             runAsUser: 5000
       volumes:
-        - name:  {{system}}-userdev
+        - name: {{system}}-userdev
           persistentVolumeClaim:
             claimName: {{system}}-userdev
+        - name: thermal-image-share-userdev
+          persistentVolumeClaim:
+            claimName: thermal-image-share-userdev
             

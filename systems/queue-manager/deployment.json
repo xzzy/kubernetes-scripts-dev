@@ -1,0 +1,9 @@
+{
+    "name": "Queue Manager Development",
+    "workload_name" : "queue-manager-userdev",
+    "workload_deployment_file": "queue-manager-userdev.yaml",    
+    "workload_storage_file": "queue-manager-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/queue-manager.env",
+    "dependency_workloads": ["postgres16"]
+}

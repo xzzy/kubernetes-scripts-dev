@@ -1,0 +1,10 @@
+{
+    "name": "Geoserver 2.27 Development",
+    "workload_name" : "geoserver-2-27-userdev",
+    "workload_deployment_file": "geoserver-2-27-userdev.yaml",
+    "workload_storage_file": "geoserver-2-27-userdev-storage.yaml",    
+    "workload_service_file": "geoserver-2-27-userdev-service.yaml",
+    "use_generic_file" : true,
+    "environment_file" : "./env/geoserver-2-27.env",
+    "dependency_workloads": []
+}
