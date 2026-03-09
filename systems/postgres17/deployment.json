@@ -1,0 +1,10 @@
+{
+    "name": "Postgres17 Development Database",
+    "workload_name" : "postgres17-userdev",
+    "workload_deployment_file": "postgres17-dev.yaml",    
+    "workload_storage_file": "postgres17-dev-storage.yaml",    
+    "workload_service_file": "postgres17-dev-service.yaml",  
+    "use_generic_file" : true,    
+    "environment_file" : "./env/postgres17.env",
+    "dependency_workloads": ["postgres17"]
+}

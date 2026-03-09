@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{system}}-userdev-deny-all-egress
+  namespace: {{namespace}} 
+spec:
+  podSelector:
+    matchLabels:
+      ns: {{namespace}} 
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          ns: {{namespace}} 
