@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ system }}-userdev
+spec:
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{ system }}-userdev
+  ports:
+    - name: http 
+      protocol: TCP
+      port: 7012
+      targetPort: 8080
+    - name: development
+      protocol: TCP
+      port: 9106
+      targetPort: 9106  
