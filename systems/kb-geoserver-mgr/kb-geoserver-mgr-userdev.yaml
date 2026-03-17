@@ -17,7 +17,7 @@ spec:
       initContainers:
           - name: file-permission-container
             image: busybox
-            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/ ; chown -R 200000:20000 /rclone-mounts"]              
+            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/ "]              
             volumeMounts:
               - name: {{system}}-userdev
                 mountPath: /mnt/storage/           
