@@ -5,5 +5,5 @@
     "workload_storage_file": "kb-geoserver-mgr-userdev-storage.yaml",    
     "use_generic_file" : true,    
     "environment_file" : "./env/kb-geoserver-mgr.env",
-    "dependency_workloads": []
+    "dependency_workloads": ["geoserver-2-27"]
 }

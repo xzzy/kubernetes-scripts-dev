@@ -67,7 +67,9 @@ spec:
               subPath: logs     
             - mountPath: /rclone-mounts
               name: thermal-image-share-userdev
-              subPath: rclone-mounts               
+              subPath: rclone-mounts      
+            - mountPath: /opt/geoserver_data/data
+              name: {{system}}-azurefile-userdev                     
           workingDir: /opt/geoserver_data
           resources:
             limits:
@@ -92,4 +94,10 @@ spec:
         - name: thermal-image-share-userdev
           persistentVolumeClaim:
             claimName: thermal-image-share-userdev
+        - name: {{system}}-azurefile-userdev
+          persistentVolumeClaim:
+            claimName: {{system}}-azurefile-userdev          
+
+
+            
             

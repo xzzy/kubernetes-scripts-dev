@@ -21,3 +21,15 @@ spec:
     requests:
       storage: 16Gi 
   storageClassName: azurefile-csi-retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{system}}-azurefile-userdev
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 16Gi 
+  storageClassName: azurefile-csi-retain

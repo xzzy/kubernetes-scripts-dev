@@ -56,9 +56,10 @@ spec:
               subPath: data                  
             - mountPath: /home/container/
               name: {{system}}-userdev
-              subPath: container   
-            - mountPath: /mnt/geoserver-storage/
-              name: geoserver-2-27-userdev                             
+              subPath: container               
+            - mountPath: /opt/geoserver_data
+              name: {{system}}-azurefile-userdev
+              subPath: data                                         
           workingDir: /data/data/projects/gis_kaartdijin_boodja_geoserver_manager/
           resources:
             limits:
@@ -82,5 +83,8 @@ spec:
             claimName: {{system}}-userdev
         - name: geoserver-2-27-userdev
           persistentVolumeClaim:
-            claimName: geoserver-2-27-userdev            
+            claimName: geoserver-2-27-userdev           
+        - name: {{system}}-azurefile-userdev
+          persistentVolumeClaim:
+            claimName: {{system}}-azurefile-userdev               
             
