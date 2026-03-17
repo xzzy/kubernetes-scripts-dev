@@ -1,0 +1,9 @@
+{
+    "name": "Kaartdijin Boodja Geoserver Manager Development",
+    "workload_name" : "kb-geoserver-mgr-userdev",
+    "workload_deployment_file": "kb-geoserver-mgr-userdev.yaml",    
+    "workload_storage_file": "kb-geoserver-mgr-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/kb-geoserver-mgr.env",
+    "dependency_workloads": [""]
+}
