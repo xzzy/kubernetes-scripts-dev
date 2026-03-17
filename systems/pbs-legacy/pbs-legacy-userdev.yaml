@@ -31,8 +31,8 @@ spec:
           value: spot                   
       containers:
         - command:
-            - /bin/bash         
-        - env:
+            - /bin/bash        
+          env:
             - name: ENABLE_WEB
               value: 'False'
             - name: ENABLE_CRON

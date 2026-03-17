@@ -12,53 +12,42 @@ spec:
   template:
     metadata:
       labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev	
+        workload.user.cattle.io/workloadselector: apps.deployment-{{namespace}}-{{system}}-userdev
     spec:
       initContainers:
           - name: file-permission-container
             image: busybox
-            command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/"]              
+            command: ["sh", "-c", "mkdir /var/lib/postgresql/data/data; chown -R 999:999 /var/lib/postgresql/data/ "]              
             volumeMounts:
               - name: {{system}}-userdev
-                mountPath: /mnt/storage/
+                mountPath: /var/lib/postgresql/data
             securityContext:
               runAsUser: 0 # Run as root user
               allowPrivilegeEscalation: true
-      tolerations:
-        - effect: NoSchedule
-          key: kubernetes.azure.com/scalesetpriority
-          operator: Equal
-          value: spot                   
       containers:
-        - env:
-            - name: ENABLE_WEB
-              value: 'False'
-            - name: ENABLE_CRON
-              value: 'False'
-          envFrom:
+        - env:            
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:                 
             - secretRef:
                 name: {{system}}-{{namespace}}-userdev
-                optional: false                
+                optional: false                         
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:feewaiver_dev_latest 
+          image: ghcr.io/dbca-wa/docker-apps-dev:{{system}}_latest  
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
-              name: tcp8080
+            - containerPort: 5432
+              name: tcp5432
               protocol: TCP
           stdin: true          
           tty: true     
           volumeMounts:
-            - mountPath: /data/
+            - mountPath: /var/lib/postgresql/data
               name: {{system}}-userdev
-              subPath: data                  
-            - mountPath: /home/container/
-              name: {{system}}-userdev
-              subPath: container   
-          workingDir: /data/data/projects/feewaiver/
+              subPath: data                      
           resources:
             limits:
-              cpu: '1'
+              cpu: '3'
               memory: 4Gi
             requests:
               cpu: 10m
@@ -70,10 +59,11 @@ spec:
                 - ALL          
             privileged: false
             readOnlyRootFilesystem: false
-            runAsNonRoot: true
-            runAsUser: 200000           
+            runAsNonRoot: false
+            runAsUser: 999 
+            runAsGroup: 999                    
       volumes:
         - name:  {{system}}-userdev
           persistentVolumeClaim:
-            claimName: {{system}}-userdev
-            
+            claimName: {{system}}-userdev          
+
