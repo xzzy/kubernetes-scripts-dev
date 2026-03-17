@@ -55,8 +55,8 @@ spec:
             - mountPath: /home/container/
               name: {{system}}-userdev
               subPath: container               
-            - mountPath: /opt/geoserver_data
-              name: {{system}}-azurefile-userdev
+            - mountPath: /opt/geoserver_data/data/
+              name: geoserver-2-27-azurefile-userdev
               subPath: data                                         
           workingDir: /data/data/projects/gis_kaartdijin_boodja_geoserver_manager/
           resources:
