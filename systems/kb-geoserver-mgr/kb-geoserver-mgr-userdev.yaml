@@ -80,11 +80,8 @@ spec:
       volumes:
         - name:  {{system}}-userdev
           persistentVolumeClaim:
-            claimName: {{system}}-userdev
-        - name: geoserver-2-27-userdev
+            claimName: {{system}}-userdev        
+        - name: geoserver-2-27-azurefile-userdev
           persistentVolumeClaim:
-            claimName: geoserver-2-27-userdev           
-        - name: {{system}}-azurefile-userdev
-          persistentVolumeClaim:
-            claimName: {{system}}-azurefile-userdev               
+            claimName: geoserver-2-27-azurefile-userdev               
             
