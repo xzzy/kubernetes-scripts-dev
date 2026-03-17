@@ -20,9 +20,7 @@ spec:
             command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/ "]              
             volumeMounts:
               - name: {{system}}-userdev
-                mountPath: /mnt/storage/           
-              - name: geoserver-2-27-userdev
-                mountPath: /mnt/geoserver-storage/                 
+                mountPath: /mnt/storage/             
             securityContext:
               runAsUser: 0 # Run as root user
               allowPrivilegeEscalation: true
