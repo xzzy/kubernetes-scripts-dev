@@ -42,7 +42,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:gis-kaartdijin-boodja-geoserver-manager_dev_latest
+          image: ghcr.io/dbca-wa/docker_app_dev:gis-kaartdijin-boodja-geoserver-manager_dev_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
