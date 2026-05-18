@@ -83,4 +83,26 @@ spec:
         - name:  ledgergw-userdev
           persistentVolumeClaim:
             claimName: ledgergw-userdev
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{namespace}}8080-ledger-userdev-appsteam.dbca.wa.gov.au
+  namespace: {{namespace}}
+  annotations:
+    # Optional: specifically for NGINX Ingress Controller
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: {{namespace}}8080-ledger-userdev-appsteam.dbca.wa.gov.au
+    http:
+      paths:
+      - backend:
+          service:
+            name: ledgergw-userdev
+            port:
+              number: 8080
+        pathType: ImplementationSpecific
             
