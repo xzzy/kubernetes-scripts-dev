@@ -110,7 +110,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{namespace}}8080-ledger-userdev-appsteam.dbca.wa.gov.au
+  name: {{namespace}}9021-ledger-userdev-appsteam.dbca.wa.gov.au
   namespace: {{namespace}}
   annotations:
     # Optional: specifically for NGINX Ingress Controller
