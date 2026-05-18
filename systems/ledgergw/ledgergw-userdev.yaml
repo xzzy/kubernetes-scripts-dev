@@ -125,6 +125,6 @@ spec:
           service:
             name: ledgergw-userdev
             port:
-              number: 8080
+              number: 9021
         pathType: ImplementationSpecific        
             
