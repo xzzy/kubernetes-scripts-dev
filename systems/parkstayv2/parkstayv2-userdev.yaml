@@ -40,7 +40,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: parkstayv2-userdev
-          image: dbcawa/docker_app_dev:parkstay_v2_latest
+          image: ghcr.io/dbca-wa/docker_app_dev:parkstay_v2_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
