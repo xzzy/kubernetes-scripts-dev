@@ -40,7 +40,7 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:pbs_dev_pbs_django_3_latest
+          image: dbcawa/docker_app_dev:pbs_dev_pbs_django_5_bs_latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
