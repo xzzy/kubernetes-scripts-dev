@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
           - name: file-permission-container
-            image: busybox
+            image: ghcr.io/dbca-wa/docker-apps-dev:busybox_base_latest
             command: ["sh", "-c", "mkdir /var/lib/postgresql/data/data; chown -R 999:999 /var/lib/postgresql/data/ "]              
             volumeMounts:
               - name: {{system}}-userdev
