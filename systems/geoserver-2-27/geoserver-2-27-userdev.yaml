@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
           - name: file-permission-container
-            image: busybox
+            image: ghcr.io/dbca-wa/docker-apps-dev:busybox_base_latest
             command: ["sh", "-c", "mkdir -p /mnt/storage/geoserver_data; mkdir -p /mnt/storage/data ; mkdir -p /mnt/storage/container/; mkdir -p /mnt/storage/logs; chown -R 5000:5000 /mnt/storage/logs; chown -R 5000:5000 /mnt/storage/geoserver_data; chown -R 5000:5000 /mnt/storage/data"]              
             volumeMounts:
               - name: {{system}}-userdev
