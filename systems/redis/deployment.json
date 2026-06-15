@@ -1,0 +1,9 @@
+{
+    "name": "Redis Development",
+    "workload_name" : "redis-userdev",
+    "workload_deployment_file": "redis-userdev.yaml",    
+    "workload_storage_file": "redis-userdev-storage.yaml",    
+    "use_generic_file" : true,    
+    "environment_file" : "./env/redis.env",
+    "dependency_workloads": []
+}
