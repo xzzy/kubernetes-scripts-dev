@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
           - name: file-permission-container
-            image: busybox
+            image: ghcr.io/dbca-wa/docker-apps-dev:busybox_base_latest
             command: ["sh", "-c", "mkdir -p /mnt/storage/data; mkdir -p /mnt/storage/container ; chown -R 200000:20000 /mnt/storage/"]              
             volumeMounts:
               - name: ubuntu2404-userdev
