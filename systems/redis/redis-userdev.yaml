@@ -40,11 +40,11 @@ spec:
                 name: {{system}}-{{namespace}}-userdev
                 optional: false                
           name: {{system}}-userdev
-          image: dbcawa/docker_app_dev:queuemanager_dev_latest
+          image: redis:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
-              name: tcp8080
+            - containerPort: 6379
+              name: tcp6379
               protocol: TCP
           stdin: true          
           tty: true     
@@ -55,7 +55,7 @@ spec:
             - mountPath: /home/container/
               name: {{system}}-userdev
               subPath: container   
-          workingDir: /data/data/projects/queue-manager/
+          workingDir: /data/data/projects/redis/
           resources:
             limits:
               cpu: '1'
